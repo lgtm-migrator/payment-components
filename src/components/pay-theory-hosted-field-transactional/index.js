@@ -17,19 +17,21 @@ class PayTheoryHostedFieldTransactional extends PayTheoryHostedField {
       type: 'pt:tokenize',
       tokenize: { amount, currency: 'USD', "pt-instrument": token }
     }
+    console.log('postMessage',window.location.origin)
     window.postMessage(
       message,
-      'https://abel.html.example.paytheorylab.com/' //window.location.origin
+      window.location.origin
     )
   }
 
   generateTransactCallback(amount, token) {
     const transact = { amount, currency: 'USD', "pt-instrument": token }
+    console.log('postMessage',window.location.origin)
     window.postMessage({
         type: 'pt:transact',
         transact
       },
-      'https://abel.html.example.paytheorylab.com/' //window.location.origin,
+      window.location.origin,
     )
   }
 
